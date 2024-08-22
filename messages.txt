@@ -1,0 +1,15 @@
+
+
+{"text":"hi","timestamp":"3:51:02 AM","self":true}
+{"text":"hello","timestamp":"3:51:24 AM","self":true}
+{"text":"onp;","timestamp":"3:58:46 AM","self":true}
+{"text":"kl ","timestamp":"3:58:47 AM","self":true}
+{"text":"knscas","timestamp":"4:12:29 AM","self":true}
+{"text":"dnkav","timestamp":"4:12:30 AM","self":true}
+{"text":"akans","timestamp":"4:12:31 AM","self":true}
+{"text":"fafa","timestamp":"4:14:15 AM","self":true}
+{"text":"hi","timestamp":"4:17:06 AM","self":true}
+{"text":"hello","timestamp":"4:17:09 AM","self":true}
+{"text":"hi","timestamp":"4:21:08 AM","self":true}
+{"text":"adfa","timestamp":"4:37:21 AM","self":true}
+{"text":"Hi","timestamp":"05:00:49","self":true}

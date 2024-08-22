@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Signup</title>
+   <link rel="stylesheet" href="style.css">
+   <style>
+      .password-strength {
+         margin-top: 1px;
+         margin-bottom: 5px;
+         font-size: 0.9em;
+         color: #ff0000;
+         /* Default color for weak strength */
+      }
+
+      .password-strength.strong {
+         color: #00ff00;
+         /* Color for strong passwords */
+      }
+   </style>
+
+</head>
+
+<body>
+   <div class="signup-container">
+      <form id="signup-form" class="signup-form" action="signup.php" method="POST">
+         <h2>Signup</h2>
+         <input type="text" id="first_name" name="first_name" placeholder="First Name"
+            style="text-transform: capitalize;" required>
+         <input type="text" id="last_name" name="last_name" placeholder="Last Name" style="text-transform: capitalize;"
+            required>
+         <input type="text" id="user_id" name="user_id" placeholder="User ID" required>
+         <input type="email" id="email" name="email" placeholder="Email" required>
+         <input type="password" id="password" name="password" placeholder="Password (Min.Length: 6)" required
+            minlength="6">
+         <div id="password-strength" class="password-strength"></div>
+         <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+         <input type="date" id="birthdate" name="birthdate" placeholder="Birthdate" required>
+         <select id="security_question1" name="security_question1" required>
+            <option value="" disabled selected>Security question (1)</option>
+            <option value="1">What was the name of your first pet?</option>
+            <option value="2">What is your favorite movie?</option>
+            <option value="3">What was the name of your elementary school?</option>
+            <option value="4">What is the name of your favorite teacher or professor?</option>
+            <option value="5">What was the model of your first phone?</option>
+         </select>
+         <input type="text" id="security_answer1" name="security_answer1" placeholder="Answer" required>
+         <select id="security_question2" name="security_question2" required>
+            <option value="" disabled selected>Security question (2)</option>
+            <option value="1">What was the name of your first pet?</option>
+            <option value="2">What is your favorite movie?</option>
+            <option value="3">What was the name of your elementary school?</option>
+            <option value="4">What is the name of your favorite teacher or professor?</option>
+            <option value="5">What was the model of your first phone?</option>
+         </select>
+         <input type="text" id="security_answer2" name="security_answer2" placeholder="Answer" required>
+         <button type="submit">Signup</button>
+      </form>
+   </div>
+
+   <script>
+      // Remove whitespace as the user types
+      document.getElementById('user_id').addEventListener('input', function (event) {
+         this.value = this.value.replace(/\s+/g, ''); // Remove all whitespace
+      });
+      // Password Confirmation:
+      document.getElementById('signup-form').addEventListener('submit', function (event) {
+         const passwordInput = document.getElementById('password');
+         const confirmPasswordInput = document.getElementById('confirm_password');
+
+         if (passwordInput.value.length < 6) {
+            alert('Password must be at least 6 characters long.');
+            event.preventDefault(); // Prevent form submission
+         }
+
+         if (passwordInput.value !== confirmPasswordInput.value) {
+            alert('Passwords do not match.');
+            event.preventDefault(); // Prevent form submission
+         }
+      });
+      // password strength indicator
+      function checkPasswordStrength(password) {
+         // Basic password strength check
+         if (password.length < 6) return 'Too short';
+         if (!/[a-z]/.test(password)) return 'Include lowercase letters';
+         if (!/[A-Z]/.test(password)) return 'Include uppercase letters';
+         if (!/[0-9]/.test(password)) return 'Include numbers';
+         return 'Strong';
+      }
+
+      document.getElementById('password').addEventListener('input', function () {
+         const password = this.value;
+         const strengthText = checkPasswordStrength(password);
+         const strengthElement = document.getElementById('password-strength');
+
+         if (strengthText === 'Strong') {
+            strengthElement.textContent = 'Password strength: ' + strengthText;
+            strengthElement.className = 'password-strength strong';
+         } else {
+            strengthElement.textContent = 'Password strength: ' + strengthText;
+            strengthElement.className = 'password-strength';
+         }
+      });
+
+   </script>
+</body>
+
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Signup</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <div class="input-container">
+      <h2>Signup</h2>
+      <form id="signup-form" class="input-container" action="signup.php" method="POST">
+         <input type="email" name="email" placeholder="Email" required>
+         <input type="password" name="password" placeholder="Password" required>
+         <button type="submit">Signup</button>
+      </form>
+   </div>
+</body> -->
+
+</html>
